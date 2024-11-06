@@ -11,29 +11,6 @@
     </js-module>
 
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="AndroidWidget">
-                <param name="android-package" value="com.example.WidgetPlugin" />
-            </feature>
-        </config-file>
-
-        <source-file src="src/android/WidgetPlugin.java" target-dir="src/com/example" />
-        <source-file src="src/android/WidgetProvider.java" target-dir="src/com/example" />
-        <resource-file src="widget_layout.xml" target="res/layout/widget_layout.xml" />
-        <resource-file src="res/values/dimens.xml" target="res/values/dimens.xml" />
-        <resource-file src="res/values/strings.xml" target="res/values/strings.xml" />
-        <resource-file src="widget_preview.xml" target="res/drawable/widget_preview.xml" />
-
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <receiver android:name="com.example.WidgetProvider" android:exported="true">
-                <intent-filter>
-                    <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                </intent-filter>
-                <meta-data android:name="android.appwidget.provider"
-                           android:resource="@xml/widget_info" />
-            </receiver>
-        </config-file>
-
-        <resource-file src="widget_info.xml" target="res/xml/widget_info.xml" />
+        
     </platform>
 </plugin>
