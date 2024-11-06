@@ -33,6 +33,6 @@
             </receiver>
         </config-file>
 
-        <resource-file src="src/android/widget_info.xml" target="res/xml/widget_info.xml" />
+        <resource-file src="widget_info.xml" target="res/xml/widget_info.xml" />
     </platform>
 </plugin>
