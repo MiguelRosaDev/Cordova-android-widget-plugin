@@ -1,0 +1,36 @@
+{
+  "name": "cordova-plugin-android-widget",
+  "version": "1.0.0",
+  "description": "Cordova plugin for creating and updating Android home screen widgets",
+  "cordova": {
+    "id": "cordova-plugin-android-widget",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "android",
+    "widget",
+    "home screen"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/cordova-plugin-android-widget.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/cordova-plugin-android-widget/issues"
+  },
+  "homepage": "https://github.com/yourusername/cordova-plugin-android-widget#readme",
+  "engines": {
+    "cordovaDependencies": {
+      "1.0.0": {
+        "cordova": ">=5.0.0",
+        "cordova-android": ">=4.0.0"
+      }
+    }
+  }
+}
