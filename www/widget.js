@@ -1,5 +1,3 @@
-'use client'
-
 var exec = require('cordova/exec');
 
 var AndroidWidget = {
