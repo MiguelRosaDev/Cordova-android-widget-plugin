@@ -22,6 +22,7 @@
         <resource-file src="widget_layout.xml" target="res/layout/widget_layout.xml" />
         <resource-file src="res/values/dimens.xml" target="res/values/dimens.xml" />
         <resource-file src="res/values/strings.xml" target="res/values/strings.xml" />
+        <resource-file src="widget_preview.xml" target="res/drawable/widget_preview.xml" />
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <receiver android:name="com.example.WidgetProvider" android:exported="true">
