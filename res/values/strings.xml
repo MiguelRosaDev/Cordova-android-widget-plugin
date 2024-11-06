@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="appwidget_text">Example Text</string>
+    <string name="appwidget_text"></string>
 </resources>
