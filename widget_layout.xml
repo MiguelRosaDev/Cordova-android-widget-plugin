@@ -6,6 +6,7 @@
     android:background="#4a4848"
     android:padding="@dimen/widget_margin">
 
+    <!-- 
     <ImageView
         android:id="@+id/widget_background"
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         android:scaleType="fitCenter"
         android:alpha="0.2"
         android:src="@drawable/logo" />
+    -->
 
     <TextView
         android:id="@+id/appwidget_text"
@@ -20,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="6dp"
-        android:background="#000000"
+        android:background="#4a4848"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:padding="6dp"
