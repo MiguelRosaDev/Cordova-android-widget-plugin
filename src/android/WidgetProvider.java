@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.widget.RemoteViews;
 import android.content.Intent;
+import android.content.ComponentName;
 
 public class WidgetProvider extends AppWidgetProvider {
     @Override
