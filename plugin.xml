@@ -18,7 +18,6 @@
 
     <platform name="android">
         <resource-file src="res/values/dimens.xml" target="res/values/dimens.xml" />
-        <resource-file src="res/values/strings.xml" target="res/values/strings.xml" />
             
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AndroidWidget">
