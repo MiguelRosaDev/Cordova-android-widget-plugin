@@ -47,7 +47,7 @@ public class WidgetProvider extends AppWidgetProvider {
                 // Set the background image
                 int logoResourceId = getResourceId(context, "logo", "drawable");
                 if (logoResourceId != 0) {
-                    views.setImageViewResource(backgroundImageId, logoResourceId);
+                    views.setImageViewResource(getResourceId(context, "widget_background", "id"), logoResourceId);
                 }
                 
                 // Create an Intent to launch the app
