@@ -16,17 +16,15 @@
                 <param name="android-package" value="com.example.WidgetPlugin" />
             </feature>
         </config-file>
-
-
-
+            
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <receiver android:name="com.example.WidgetProvider" android:exported="true">
                 <intent-filter>
                     <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 </intent-filter>
-                <meta-data android:name="android.appwidget.provider"
-                           android:resource="@xml/widget_info" />
+                <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info" />
             </receiver>
         </config-file>
+        <resource-file src="widget_info.xml" target="res/xml/widget_info.xml" />
     </platform>
 </plugin>
