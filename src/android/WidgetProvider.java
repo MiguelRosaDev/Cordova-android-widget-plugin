@@ -1,16 +1,16 @@
 package com.example;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.widget.RemoteViews;
 import android.content.Intent;
+import android.widget.RemoteViews;
 import android.util.Log;
 import android.content.ComponentName;
 
 public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
-    private static final int APPWIDGET_TEXT_ID = 0x7f0a0001; // Hardcoded ID for appwidget_text
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -40,9 +40,18 @@ public class WidgetProvider extends AppWidgetProvider {
         try {
             RemoteViews views = new RemoteViews(context.getPackageName(), getResourceId(context, "widget_layout", "layout"));
             if (views != null) {
-                views.setTextViewText(APPWIDGET_TEXT_ID, text);
-                views.setTextColor(APPWIDGET_TEXT_ID, 0xFFFFFFFF); // White text color
-                
+                int textViewId = getResourceId(context, "appwidget_text", "id");
+                views.setTextViewText(textViewId, text);
+                views.setTextColor(textViewId, 0xFFFFFFFF); // White text color
+
+                // Create an Intent to launch the app
+                Intent intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+                if (intent != null) {
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                    views.setOnClickPendingIntent(getResourceId(context, "widget_layout", "id"), pendingIntent);
+                }
+
                 appWidgetManager.updateAppWidget(appWidgetId, views);
                 Log.d(TAG, "Widget updated successfully with text: " + text);
             } else {
