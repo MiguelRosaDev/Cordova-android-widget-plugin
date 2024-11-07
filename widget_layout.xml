@@ -16,7 +16,7 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:padding="8dp"
-        android:text="Widget Text"
+        android:text="NOS"
         android:textStyle="bold" />
 
 </RelativeLayout>
