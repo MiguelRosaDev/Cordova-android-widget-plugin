@@ -15,15 +15,17 @@ public class WidgetProvider extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId, "");
+            updateAppWidget(context, appWidgetManager, appWidgetId, "Widget Initialized");
         }
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        Log.d(TAG, "onReceive called with action: " + intent.getAction());
         if (intent.getAction() != null && intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {
             String widgetText = intent.getStringExtra("widgetText");
+            Log.d(TAG, "Received widget text: " + widgetText);
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
             ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
             int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
