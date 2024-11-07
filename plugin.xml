@@ -25,9 +25,13 @@
                 <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info" />
             </receiver>
         </config-file>
+        <source-file src="src/android/WidgetPlugin.java" target-dir="src/com/example" />
+        <source-file src="src/android/WidgetProvider.java" target-dir="src/com/example" />
+            
         <resource-file src="widget_info.xml" target="res/xml/widget_info.xml" />
         <resource-file src="widget_layout.xml" target="res/layout/widget_layout.xml" />
         <resource-file src="res/values/dimens.xml" target="res/values/dimens.xml" />
         <resource-file src="res/values/strings.xml" target="res/values/strings.xml" />
+        <resource-file src="widget_preview.xml" target="res/drawable/widget_preview.xml" />
     </platform>
 </plugin>
