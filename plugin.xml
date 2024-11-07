@@ -27,5 +27,6 @@
         </config-file>
         <resource-file src="widget_info.xml" target="res/xml/widget_info.xml" />
         <resource-file src="widget_layout.xml" target="res/layout/widget_layout.xml" />
+        <resource-file src="res/values/dimens.xml" target="res/values/dimens.xml" />
     </platform>
 </plugin>
