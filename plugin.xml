@@ -24,6 +24,11 @@
                 <param name="android-package" value="com.example.WidgetPlugin" />
             </feature>
         </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
             
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <receiver android:name="com.example.WidgetProvider" android:exported="true">
