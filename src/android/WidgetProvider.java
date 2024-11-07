@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.R;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
