@@ -11,6 +11,9 @@
     </js-module>
 
     <platform name="android">
+        <resource-file src="res/values/dimens.xml" target="res/values/dimens.xml" />
+        <resource-file src="res/values/strings.xml" target="res/values/strings.xml" />
+            
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AndroidWidget">
                 <param name="android-package" value="com.example.WidgetPlugin" />
@@ -30,8 +33,6 @@
             
         <resource-file src="widget_info.xml" target="res/xml/widget_info.xml" />
         <resource-file src="widget_layout.xml" target="res/layout/widget_layout.xml" />
-        <resource-file src="res/values/dimens.xml" target="res/values/dimens.xml" />
-        <resource-file src="res/values/strings.xml" target="res/values/strings.xml" />
         <resource-file src="widget_preview.xml" target="res/drawable/widget_preview.xml" />
     </platform>
 </plugin>
