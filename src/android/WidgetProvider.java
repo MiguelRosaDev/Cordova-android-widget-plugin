@@ -44,6 +44,12 @@ public class WidgetProvider extends AppWidgetProvider {
                 views.setTextViewText(textViewId, text);
                 views.setTextColor(textViewId, 0xFFFFFFFF); // White text color
 
+                // Set the background image
+                int logoResourceId = getResourceId(context, "logo", "drawable");
+                if (logoResourceId != 0) {
+                    views.setImageViewResource(backgroundImageId, logoResourceId);
+                }
+                
                 // Create an Intent to launch the app
                 Intent intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
                 if (intent != null) {
