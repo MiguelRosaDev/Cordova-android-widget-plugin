@@ -45,6 +45,6 @@
         <resource-file src="widget_layout.xml" target="res/layout/widget_layout.xml" />
         <resource-file src="widget_preview.xml" target="res/drawable/widget_preview.xml" />
         <resource-file src="res/drawable/logo.xml" target="res/drawable/logo.xml" />
-        <resource-file src="res/drawable/icon.png" target="res/drawable/icon.png" />
+        <resource-file src="res/drawable/background.png" target="res/drawable/background.png" />
     </platform>
 </plugin>
