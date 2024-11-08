@@ -7,4 +7,8 @@
     android:initialLayout="@layout/widget_layout"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen">
+    android:initialKeyguardLayout="@layout/widget_layout">
+    <meta-data
+        android:name="android.appwidget.provider"
+        android:resource="@xml/widget_info" />
 </appwidget-provider>
