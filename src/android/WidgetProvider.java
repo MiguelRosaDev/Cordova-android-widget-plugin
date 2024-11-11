@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 
 public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
+    public static final String BUTTON_CLICKED_ACTION = "com.example.BUTTON_CLICKED";
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -34,6 +35,10 @@ public class WidgetProvider extends AppWidgetProvider {
             for (int appWidgetId : appWidgetIds) {
                 updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
             }
+        } else if (BUTTON_CLICKED_ACTION.equals(intent.getAction())) {
+            Intent buttonClickedIntent = new Intent(context, WidgetPlugin.class);
+            buttonClickedIntent.setAction(BUTTON_CLICKED_ACTION);
+            context.sendBroadcast(buttonClickedIntent);
         }
     }
 
@@ -59,10 +64,16 @@ public class WidgetProvider extends AppWidgetProvider {
                     views.setOnClickPendingIntent(getResourceId(context, "widget_layout", "id"), pendingIntent);
                 }
 
+                // Set up the button click intent
+                Intent buttonIntent = new Intent(context, WidgetProvider.class);
+                buttonIntent.setAction(BUTTON_CLICKED_ACTION);
+                PendingIntent buttonPendingIntent = PendingIntent.getBroadcast(context, 0, buttonIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                views.setOnClickPendingIntent(getResourceId(context, "update_button", "id"), buttonPendingIntent);
+
                 appWidgetManager.updateAppWidget(appWidgetId, views);
                 Log.d(TAG, "Widget updated successfully with text: " + text);
             } else {
-                Log.e(TAG, "Failed to create RemoteViews");
+                Log.e(TAG, "Failed to create RemoteViews or empty text");
             }
         } catch (Exception e) {
             Log.e(TAG, "Error updating widget: " + e.getMessage());
