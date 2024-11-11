@@ -28,4 +28,13 @@
         android:text="Por favor faça login na App MyNOS"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/update_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appwidget_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:text="Update" />
+
 </RelativeLayout>
