@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
     public static final String BUTTON_CLICKED_ACTION = "com.example.BUTTON_CLICKED";
+    public static final String UPDATE_ACTION = "com.example.UPDATE_WIDGET";
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
