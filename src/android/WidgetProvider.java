@@ -36,6 +36,7 @@ public class WidgetProvider extends AppWidgetProvider {
         ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
         for (int appWidgetId : appWidgetIds) {
+            Log.d(TAG, "onEnabled called 2 " + appWidgetId);
             updateAppWidget(context, appWidgetManager, appWidgetId, "Por favor faça login na App MyNOS");
         }
     }
