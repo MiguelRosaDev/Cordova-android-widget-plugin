@@ -59,7 +59,7 @@ public class WidgetProvider extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String text) {
         try {
             RemoteViews views = new RemoteViews(context.getPackageName(), getResourceId(context, "widget_layout", "layout"));
-            if (views != null && text != null) {
+            if (views != null && !text.trim().isEmpty()) {
                 int textViewId = getResourceId(context, "appwidget_text", "id");
                 views.setTextViewText(textViewId, text);
                 views.setTextColor(textViewId, 0xFFFFFFFF); // White text color
