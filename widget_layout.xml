@@ -3,7 +3,7 @@
     android:id="@+id/widget_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#0a0a0a"
     android:padding="@dimen/widget_margin">
 
     
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="4dp"
-        android:textColor="#4a4848"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:padding="4dp"
         android:text="Widget Text"
