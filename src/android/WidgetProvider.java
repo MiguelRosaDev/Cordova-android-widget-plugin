@@ -17,7 +17,7 @@ public class WidgetProvider extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d(TAG, "onUpdate called");
         for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId, "Widget Initialized");
+            updateAppWidget(context, appWidgetManager, appWidgetId, "Sem Informação/Faça login na App MyNOS");
         }
     }
 
