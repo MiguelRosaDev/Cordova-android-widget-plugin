@@ -25,7 +25,7 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:padding="4dp"
-        android:text="Widget Text"
+        android:text="Por favor faça login na App MyNOS"
         android:textStyle="bold" />
 
 </RelativeLayout>
