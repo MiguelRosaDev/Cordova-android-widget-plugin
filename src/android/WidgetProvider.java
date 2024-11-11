@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import android.util.Log;
 import android.content.ComponentName;
+import android.content.SharedPreferences;
 
 public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
