@@ -36,7 +36,6 @@ public class WidgetProvider extends AppWidgetProvider {
         ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
         for (int appWidgetId : appWidgetIds) {
-            Log.d(TAG, "onEnabled called 2 " + appWidgetId);
             updateAppWidget(context, appWidgetManager, appWidgetId, "Por favor faça login na App MyNOS");
         }
     }
@@ -60,7 +59,7 @@ public class WidgetProvider extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String text) {
         try {
             RemoteViews views = new RemoteViews(context.getPackageName(), getResourceId(context, "widget_layout", "layout"));
-            if (views != null) {
+            if (views != null && text != null) {
                 int textViewId = getResourceId(context, "appwidget_text", "id");
                 views.setTextViewText(textViewId, text);
                 views.setTextColor(textViewId, 0xFFFFFFFF); // White text color
