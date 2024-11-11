@@ -20,6 +20,22 @@ public class WidgetProvider extends AppWidgetProvider {
         }
     }
 
+    //First time you load the widget on android home screen
+    @Override
+    public void onEnabled(Context context) {
+        super.onEnabled(context);
+        Log.d(TAG, "onEnabled called");
+        
+        storeWidgetText(context, "Por favor faça login na App MyNOS");
+        
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+        for (int appWidgetId : appWidgetIds) {
+            updateAppWidget(context, appWidgetManager, appWidgetId, "Por favor faça login na App MyNOS");
+        }
+    }
+
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
@@ -70,5 +86,17 @@ public class WidgetProvider extends AppWidgetProvider {
 
     private static int getResourceId(Context context, String name, String type) {
         return context.getResources().getIdentifier(name, type, context.getPackageName());
+    }
+
+    private String getStoredWidgetText(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getString(PREFS_KEY_TEXT, "Por favor faça login na App MyNOS"); 
+    }
+
+    private void storeWidgetText(Context context, String text) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(PREFS_KEY_TEXT, text);
+        editor.apply();
     }
 }
