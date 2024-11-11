@@ -12,6 +12,9 @@ import android.content.SharedPreferences;
 
 public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
+    private static final String PREFS_NAME = "com.example.WidgetProvider";  
+    private static final String PREFS_KEY_TEXT = "widgetText";  
+
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
