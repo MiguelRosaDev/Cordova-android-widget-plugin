@@ -65,6 +65,7 @@ public class WidgetPlugin extends CordovaPlugin {
     }
     
     private void registerButtonClickReceiver() {
+        Log.d(TAG, "Button click receiver initialized");
         if (buttonClickReceiver == null) {
             buttonClickReceiver = new BroadcastReceiver() {
                 @Override
