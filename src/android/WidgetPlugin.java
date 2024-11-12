@@ -18,12 +18,6 @@ public class WidgetPlugin extends CordovaPlugin {
     private static final String TAG = "WidgetPlugin";
     private CallbackContext buttonClickCallbackContext;
     private BroadcastReceiver buttonClickReceiver;
-
-    @Override
-    public void initialize(org.apache.cordova.CordovaInterface cordova, org.apache.cordova.CordovaWebView webView) {
-        super.initialize(cordova, webView);
-        registerButtonClickReceiver();
-    }
     
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -62,35 +56,5 @@ public class WidgetPlugin extends CordovaPlugin {
         PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
         pluginResult.setKeepCallback(true);
         callbackContext.sendPluginResult(pluginResult);
-    }
-    
-    private void registerButtonClickReceiver() {
-        Log.d(TAG, "Button click receiver initialized");
-        if (buttonClickReceiver == null) {
-            buttonClickReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    if (WidgetProvider.BUTTON_CLICKED_ACTION.equals(intent.getAction())) {
-                        Log.d(TAG, "Button click received in WidgetPlugin");
-                        if (buttonClickCallbackContext != null) {
-                            PluginResult result = new PluginResult(PluginResult.Status.OK, "Button clicked");
-                            result.setKeepCallback(true);
-                            buttonClickCallbackContext.sendPluginResult(result);
-                        }
-                    }
-                }
-            };
-            IntentFilter filter = new IntentFilter(WidgetProvider.BUTTON_CLICKED_ACTION);
-            cordova.getActivity().registerReceiver(buttonClickReceiver, filter);
-        }
-    }
-    
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (buttonClickReceiver != null) {
-            cordova.getActivity().unregisterReceiver(buttonClickReceiver);
-            buttonClickReceiver = null;
-        }
     }
 }
