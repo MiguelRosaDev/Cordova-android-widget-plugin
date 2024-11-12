@@ -70,7 +70,7 @@ public class WidgetPlugin extends CordovaPlugin {
                 }
             }
         }
-    }
+    };
     
     @Override
     public void onDestroy() {
