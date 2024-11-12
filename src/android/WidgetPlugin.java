@@ -16,8 +16,23 @@ import android.content.IntentFilter;
 
 public class WidgetPlugin extends CordovaPlugin {
     private static final String TAG = "WidgetPlugin";
-    private CallbackContext buttonClickCallbackContext;
-    private BroadcastReceiver buttonClickReceiver;
+    private static final String BUTTON_CLICKED_ACTION = "com.example.BUTTON_CLICKED";
+    private CallbackContext buttonClickCallback;
+
+        
+    private final BroadcastReceiver buttonClickReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (BUTTON_CLICKED_ACTION.equals(intent.getAction())) {
+                Log.d(TAG, "Button clicked broadcast received in WidgetPlugin");
+                if (buttonClickCallback != null) {
+                    PluginResult result = new PluginResult(PluginResult.Status.OK);
+                    result.setKeepCallback(true);
+                    buttonClickCallback.sendPluginResult(result);
+                }
+            }
+        }
+    };
     
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -56,5 +71,20 @@ public class WidgetPlugin extends CordovaPlugin {
         PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
         pluginResult.setKeepCallback(true);
         callbackContext.sendPluginResult(pluginResult);
+    }
+
+    @Override
+    public void initialize(final Context context, final Intent intent) {
+        super.initialize(context, intent);
+        IntentFilter filter = new IntentFilter(BUTTON_CLICKED_ACTION);
+        context.registerReceiver(buttonClickReceiver, filter);
+        Log.d(TAG, "BroadcastReceiver for button clicks registered in WidgetPlugin");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        cordova.getActivity().unregisterReceiver(buttonClickReceiver);
+        Log.d(TAG, "BroadcastReceiver for button clicks unregistered in WidgetPlugin");
     }
 }
