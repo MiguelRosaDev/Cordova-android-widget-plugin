@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import android.util.Log;
 import android.content.ComponentName;
-import android.content.SharedPreferences;
 
 public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
@@ -39,7 +38,8 @@ public class WidgetProvider extends AppWidgetProvider {
         } else if (BUTTON_CLICKED_ACTION.equals(intent.getAction())) {
             Log.d(TAG, "Received widget button click");
             Intent buttonClickedIntent = new Intent(BUTTON_CLICKED_ACTION);
-            context.sendBroadcast(buttonClickedIntent);
+            buttonClickedIntent.setPackage(context.getPackageName());
+            context.sendBroadcast(buttonClickedIntent); 
         }
     }
 
