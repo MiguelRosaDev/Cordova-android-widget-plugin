@@ -17,6 +17,7 @@ import android.content.IntentFilter;
 public class WidgetPlugin extends CordovaPlugin {
     private static final String TAG = "WidgetPlugin";
     private CallbackContext buttonClickCallbackContext;
+    private BroadcastReceiver buttonClickReceiver;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -52,31 +53,34 @@ public class WidgetPlugin extends CordovaPlugin {
     
     private void listenForButtonClicks(CallbackContext callbackContext) {
         this.buttonClickCallbackContext = callbackContext;
-        IntentFilter filter = new IntentFilter(WidgetProvider.BUTTON_CLICKED_ACTION);
-        cordova.getActivity().registerReceiver(buttonClickReceiver, filter);
+        if (buttonClickReceiver == null) {
+            buttonClickReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    if (WidgetProvider.BUTTON_CLICKED_ACTION.equals(intent.getAction())) {
+                        Log.d(TAG, "Button click received in WidgetPlugin");
+                        if (buttonClickCallbackContext != null) {
+                            PluginResult result = new PluginResult(PluginResult.Status.OK, "Button clicked");
+                            result.setKeepCallback(true);
+                            buttonClickCallbackContext.sendPluginResult(result);
+                        }
+                    }
+                }
+            };
+            IntentFilter filter = new IntentFilter(WidgetProvider.BUTTON_CLICKED_ACTION);
+            cordova.getActivity().registerReceiver(buttonClickReceiver, filter);
+        }
         PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
         pluginResult.setKeepCallback(true);
         callbackContext.sendPluginResult(pluginResult);
     }
-    
-    private BroadcastReceiver buttonClickReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (WidgetProvider.BUTTON_CLICKED_ACTION.equals(intent.getAction())) {
-                if (buttonClickCallbackContext != null) {
-                    PluginResult result = new PluginResult(PluginResult.Status.OK, "Button clicked");
-                    result.setKeepCallback(true);
-                    buttonClickCallbackContext.sendPluginResult(result);
-                }
-            }
-        }
-    };
     
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (buttonClickReceiver != null) {
             cordova.getActivity().unregisterReceiver(buttonClickReceiver);
+            buttonClickReceiver = null;
         }
     }
 }
