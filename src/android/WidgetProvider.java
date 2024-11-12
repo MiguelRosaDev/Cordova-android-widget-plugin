@@ -36,7 +36,7 @@ public class WidgetProvider extends AppWidgetProvider {
             for (int appWidgetId : appWidgetIds) {
                 updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
             }
-        } else if (BUTTON_CLICKED_ACTION.equals(intent.getAction())) 
+        } else if (BUTTON_CLICKED_ACTION.equals(intent.getAction())) {
             Log.d(TAG, "Received widget button:");
             Intent buttonClickedIntent = new Intent(context, WidgetPlugin.class);
             buttonClickedIntent.setAction(BUTTON_CLICKED_ACTION);
