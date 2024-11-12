@@ -20,6 +20,12 @@ public class WidgetPlugin extends CordovaPlugin {
     private BroadcastReceiver buttonClickReceiver;
 
     @Override
+    public void initialize(org.apache.cordova.CordovaInterface cordova, org.apache.cordova.CordovaWebView webView) {
+        super.initialize(cordova, webView);
+        registerButtonClickReceiver();
+    }
+    
+    @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("updateWidget")) {
             String text = args.getString(0);
@@ -53,6 +59,12 @@ public class WidgetPlugin extends CordovaPlugin {
     
     private void listenForButtonClicks(CallbackContext callbackContext) {
         this.buttonClickCallbackContext = callbackContext;
+        PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
+        pluginResult.setKeepCallback(true);
+        callbackContext.sendPluginResult(pluginResult);
+    }
+    
+    private void registerButtonClickReceiver() {
         if (buttonClickReceiver == null) {
             buttonClickReceiver = new BroadcastReceiver() {
                 @Override
@@ -70,9 +82,6 @@ public class WidgetPlugin extends CordovaPlugin {
             IntentFilter filter = new IntentFilter(WidgetProvider.BUTTON_CLICKED_ACTION);
             cordova.getActivity().registerReceiver(buttonClickReceiver, filter);
         }
-        PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
-        pluginResult.setKeepCallback(true);
-        callbackContext.sendPluginResult(pluginResult);
     }
     
     @Override
