@@ -19,7 +19,7 @@ public class WidgetProvider extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d(TAG, "onUpdate called");
         for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId, "Sem Informação/Faça login na App MyNOS");
+            updateAppWidget(context, appWidgetManager, appWidgetId, "Sem Informação/Faça login na App");
         }
     }
 
@@ -60,6 +60,12 @@ public class WidgetProvider extends AppWidgetProvider {
                     PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
                     views.setOnClickPendingIntent(getResourceId(context, "widget_layout", "id"), pendingIntent);
                 }
+                
+                // Set up the button click intent
+                Intent buttonIntent = new Intent(context, WidgetProvider.class);
+                buttonIntent.setAction(BUTTON_CLICKED_ACTION);
+                PendingIntent buttonPendingIntent = PendingIntent.getBroadcast(context, 0, buttonIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                views.setOnClickPendingIntent(getResourceId(context, "update_button", "id"), buttonPendingIntent);
 
                 appWidgetManager.updateAppWidget(appWidgetId, views);
                 Log.d(TAG, "Widget updated successfully with text: " + text);
