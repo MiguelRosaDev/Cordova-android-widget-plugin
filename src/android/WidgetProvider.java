@@ -36,7 +36,7 @@ public class WidgetProvider extends AppWidgetProvider {
             for (int appWidgetId : appWidgetIds) {
                 updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
             }
-        } else if (intent.getAction().equals(AppWidgetManager.BUTTON_CLICKED_ACTION)) {
+        } else if (BUTTON_CLICKED_ACTION.equals(intent.getAction())) {
             Intent buttonClickedIntent = new Intent(context, WidgetPlugin.class);
             buttonClickedIntent.setAction(BUTTON_CLICKED_ACTION);
             context.sendBroadcast(buttonClickedIntent);
