@@ -59,10 +59,10 @@ public class WidgetPlugin extends CordovaPlugin {
     }
 
     public void sendButtonClickEvent(String eventData) {
-    if (buttonClickCallbackContext != null) {
-        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, eventData);
-        pluginResult.setKeepCallback(true); // Mantém o callback ativo para futuros eventos
-        buttonClickCallbackContext.sendPluginResult(pluginResult);
+        if (buttonClickCallbackContext != null) {
+            PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, eventData);
+            pluginResult.setKeepCallback(true); // Mantém o callback ativo para futuros eventos
+            buttonClickCallbackContext.sendPluginResult(pluginResult);
+        }
     }
-}
 }
