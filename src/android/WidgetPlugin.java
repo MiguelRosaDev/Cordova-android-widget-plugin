@@ -18,6 +18,15 @@ public class WidgetPlugin extends CordovaPlugin {
     private static final String TAG = "WidgetPlugin";
     private CallbackContext buttonClickCallbackContext;
     private BroadcastReceiver buttonClickReceiver;
+    private static WidgetPlugin instance;
+
+    public WidgetPlugin() {
+        instance = this; 
+    }
+
+    public static WidgetPlugin getInstance() {
+        return instance; 
+    }
     
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
