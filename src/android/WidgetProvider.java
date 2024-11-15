@@ -16,7 +16,7 @@ public class WidgetProvider extends AppWidgetProvider {
 
     private final WidgetPlugin myWidgetPlugin;
 
-    public ButtonClickHandler(WidgetPlugin myWidgetPlugin) {
+    public WidgetProvider(WidgetPlugin myWidgetPlugin) {
         this.myWidgetPlugin = myWidgetPlugin;
     }
     
