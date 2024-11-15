@@ -14,6 +14,12 @@ public class WidgetProvider extends AppWidgetProvider {
     public static final String BUTTON_CLICKED_ACTION = "com.example.BUTTON_CLICKED";
     public static final String UPDATE_ACTION = "com.example.UPDATE_WIDGET";
 
+    private final WidgetPlugin myWidgetPlugin;
+
+    public ButtonClickHandler(WidgetPlugin myWidgetPlugin) {
+        this.myWidgetPlugin = myWidgetPlugin;
+    }
+    
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d(TAG, "onUpdate called");
@@ -37,9 +43,10 @@ public class WidgetProvider extends AppWidgetProvider {
             }
         } else if (BUTTON_CLICKED_ACTION.equals(intent.getAction())) {
             Log.d(TAG, "Received widget button click");
-            Intent buttonClickedIntent = new Intent(BUTTON_CLICKED_ACTION);
-            buttonClickedIntent.setPackage(context.getPackageName());
-            context.sendBroadcast(buttonClickedIntent); 
+            myWidgetPlugin.sendButtonClickEvent("Button Clicked");
+            //Intent buttonClickedIntent = new Intent(BUTTON_CLICKED_ACTION);
+            //buttonClickedIntent.setPackage(context.getPackageName());
+            //context.sendBroadcast(buttonClickedIntent); 
         }
     }
 
