@@ -13,12 +13,6 @@ public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
     public static final String BUTTON_CLICKED_ACTION = "com.example.BUTTON_CLICKED";
     public static final String UPDATE_ACTION = "com.example.UPDATE_WIDGET";
-
-    private final WidgetPlugin myWidgetPlugin;
-
-    public WidgetProvider(WidgetPlugin myWidgetPlugin) {
-        this.myWidgetPlugin = myWidgetPlugin;
-    }
     
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -43,7 +37,12 @@ public class WidgetProvider extends AppWidgetProvider {
             }
         } else if (BUTTON_CLICKED_ACTION.equals(intent.getAction())) {
             Log.d(TAG, "Received widget button click");
-            myWidgetPlugin.sendButtonClickEvent("Button Clicked");
+            WidgetPlugin widgetInstance = WidgetPlugin.getInstance();
+            if (widgetInstance != null) {
+                widgetInstance.sendButtonClickEvent("Button Clicked");
+            } else {
+                Log.e(TAG, "WidgetPlugin instance is null");
+            }
             //Intent buttonClickedIntent = new Intent(BUTTON_CLICKED_ACTION);
             //buttonClickedIntent.setPackage(context.getPackageName());
             //context.sendBroadcast(buttonClickedIntent); 
