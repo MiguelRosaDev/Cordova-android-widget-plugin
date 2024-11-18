@@ -82,5 +82,7 @@ public class WidgetPlugin extends CordovaPlugin {
         Intent intent = new Intent("com.example.APP_CLOSED");
         intent.setPackage(getPackageName()); 
         context.sendBroadcast(intent);
+        
+        super.onTaskRemoved(rootIntent);
     }
 }
