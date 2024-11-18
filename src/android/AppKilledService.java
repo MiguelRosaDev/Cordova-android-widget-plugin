@@ -3,6 +3,7 @@ package com.example;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.content.Context;
 import android.util.Log;
 
 public class AppKilledService extends Service {
