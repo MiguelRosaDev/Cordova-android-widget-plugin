@@ -15,12 +15,16 @@ public class WidgetProvider extends AppWidgetProvider {
     public static final String UPDATE_ACTION = "com.example.UPDATE_WIDGET";
     public static final String APP_CLOSED = "com.example.APP_CLOSED";
     public static String widgetText = "Faça Login na App";
+    private static boolean isFirstTime = true;
     
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d(TAG, "onUpdate called");
-        for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
+        if (isFirstTime) {
+            for (int appWidgetId : appWidgetIds) {
+                updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
+            }
+            isFirstTime = false;
         }
     }
 
