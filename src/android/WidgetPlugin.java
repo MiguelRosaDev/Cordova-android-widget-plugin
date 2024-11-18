@@ -84,7 +84,7 @@ public class WidgetPlugin extends CordovaPlugin {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
         Intent intent = new Intent(context, WidgetProvider.class);
-        intent.setAction(AppWidgetManager.ACTION_APP_CLOSED);
+        intent.setAction("com.example.APP_CLOSED");
         intent.putExtra("widgetText", "Faça Login na App");
         int[] ids = appWidgetManager.getAppWidgetIds(thisWidget);
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
