@@ -49,7 +49,7 @@ public class WidgetProvider extends AppWidgetProvider {
             } else {
                 Log.e(TAG, "WidgetPlugin instance is null");
             }
-        } else if (APP_CLOSED.equals(intent.getAction())) {
+        } else if (intent.getAction().equals(AppWidgetManager.ACTION_APP_CLOSED)) {
             Log.d(TAG, "App closed event received in widget");
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
             ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
