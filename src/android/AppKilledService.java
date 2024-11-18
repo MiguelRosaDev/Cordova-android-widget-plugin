@@ -17,8 +17,9 @@ public class AppKilledService extends Service {
     public void onTaskRemoved(Intent rootIntent) {
         Log.d(TAG, "App killed: task removed");
         // Broadcast an intent that our plugin can listen for
+        Context context = this.cordova.getActivity().getApplicationContext();
         Intent intent = new Intent("com.example.APP_KILLED");
-        sendBroadcast(intent);
+        context.sendBroadcast(intent);
         super.onTaskRemoved(rootIntent);
     }
 }
