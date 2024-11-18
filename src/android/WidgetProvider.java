@@ -50,14 +50,14 @@ public class WidgetProvider extends AppWidgetProvider {
                 Log.e(TAG, "WidgetPlugin instance is null");
             }
         } else if (APP_CLOSED.equals(intent.getAction())) {
-                Log.d(TAG, "App closed event received in widget");
-                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-                ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
-                int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
-                for (int appWidgetId : appWidgetIds) {
-                        updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
-                }
+            Log.d(TAG, "App closed event received in widget");
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
+            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+            for (int appWidgetId : appWidgetIds) {
+                updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
             }
+        }
     }
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String text) {
