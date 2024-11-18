@@ -42,7 +42,6 @@
         </config-file>
         <source-file src="src/android/WidgetPlugin.java" target-dir="src/com/example" />
         <source-file src="src/android/WidgetProvider.java" target-dir="src/com/example" />
-        <source-file src="src/android/MyCordovaActivity.java" target-dir="src/com/example" />
             
         <resource-file src="widget_info.xml" target="res/xml/widget_info.xml" />
         <resource-file src="widget_layout.xml" target="res/layout/widget_layout.xml" />
