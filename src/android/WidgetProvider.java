@@ -16,17 +16,7 @@ public class WidgetProvider extends AppWidgetProvider {
     public static final String APP_CLOSED = "com.example.APP_CLOSED";
     public static String widgetText = "Faça Login na App";
     private static boolean isFirstTime = true;
-
-    @Override
-    public void onTaskRemoved(Intent rootIntent) {
-        super.onTaskRemoved(rootIntent);
-        Log.d("MainActivity", "App removed from background");    
-        Intent intent = new Intent(APP_CLOSED);
-        intent.setPackage(getPackageName()); 
-        sendBroadcast(intent);
-    }
-
-    
+  
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d(TAG, "onUpdate called");
