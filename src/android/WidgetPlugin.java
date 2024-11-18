@@ -74,4 +74,15 @@ public class WidgetPlugin extends CordovaPlugin {
             buttonClickCallbackContext.sendPluginResult(pluginResult);
         }
     }
+    
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        super.onTaskRemoved(rootIntent);
+        
+        Log.d("MainActivity", "App removed from background");    
+        Context context = this.cordova.getActivity().getApplicationContext();
+        Intent intent = new Intent("com.example.APP_CLOSED");
+        intent.setPackage(getPackageName()); 
+        context.sendBroadcast(intent);
+    }
 }
