@@ -14,7 +14,7 @@ public class WidgetProvider extends AppWidgetProvider {
     public static final String BUTTON_CLICKED_ACTION = "com.example.BUTTON_CLICKED";
     public static final String UPDATE_ACTION = "com.example.UPDATE_WIDGET";
     public static final String APP_CLOSED = "com.example.APP_CLOSED";
-    public static String widgetText = "Faça Login na App";
+    public static String localWidgetText = "Faça Login na App";
     private static boolean isFirstTime = true;
   
     @Override
@@ -22,7 +22,7 @@ public class WidgetProvider extends AppWidgetProvider {
         Log.d(TAG, "onUpdate called");
         if (isFirstTime) {
             for (int appWidgetId : appWidgetIds) {
-                updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
+                updateAppWidget(context, appWidgetManager, appWidgetId, localWidgetText);
             }
             isFirstTime = false;
         }
@@ -51,6 +51,7 @@ public class WidgetProvider extends AppWidgetProvider {
             }
         } else if (intent.getAction().equals(AppWidgetManager.ACTION_APP_CLOSED)) {
             Log.d(TAG, "App closed event received in widget");
+            String widgetText = intent.getStringExtra("widgetText");
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
             ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
             int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
