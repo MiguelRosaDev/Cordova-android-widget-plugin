@@ -20,9 +20,7 @@ public class WidgetProvider extends AppWidgetProvider {
     @Override
     public void onTaskRemoved(Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
-    
-        Log.d("MainActivity", "App removed from background");
-    
+        Log.d("MainActivity", "App removed from background");    
         Intent intent = new Intent(APP_CLOSED);
         intent.setPackage(getPackageName()); 
         sendBroadcast(intent);
