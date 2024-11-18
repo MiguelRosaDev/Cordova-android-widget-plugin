@@ -13,12 +13,14 @@ public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
     public static final String BUTTON_CLICKED_ACTION = "com.example.BUTTON_CLICKED";
     public static final String UPDATE_ACTION = "com.example.UPDATE_WIDGET";
+    public static final String APP_CLOSED = "com.example.APP_CLOSED";
+    public static String widgetText = "Faça Login na App";
     
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d(TAG, "onUpdate called");
         for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId, "Sem Informação/Faça login na App");
+            updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
         }
     }
 
@@ -43,10 +45,15 @@ public class WidgetProvider extends AppWidgetProvider {
             } else {
                 Log.e(TAG, "WidgetPlugin instance is null");
             }
-            //Intent buttonClickedIntent = new Intent(BUTTON_CLICKED_ACTION);
-            //buttonClickedIntent.setPackage(context.getPackageName());
-            //context.sendBroadcast(buttonClickedIntent); 
-        }
+        } else if (APP_CLOSED.equals(intent.getAction())) {
+                Log.d(TAG, "App closed event received in widget");
+                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+                ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
+                int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+                for (int appWidgetId : appWidgetIds) {
+                        updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
+                }
+            }
     }
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String text) {
