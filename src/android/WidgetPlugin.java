@@ -81,7 +81,6 @@ public class WidgetPlugin extends CordovaPlugin {
         Log.d(TAG, "onDestroy APP_CLOSED");
         Context context = this.cordova.getActivity().getApplicationContext();
         Intent intent = new Intent("com.example.APP_CLOSED");
-        intent.setPackage(getPackageName()); 
         context.sendBroadcast(intent);
     }
 }
