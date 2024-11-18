@@ -13,7 +13,7 @@ public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
     public static final String BUTTON_CLICKED_ACTION = "com.example.BUTTON_CLICKED";
     public static final String UPDATE_ACTION = "com.example.UPDATE_WIDGET";
-    public static final String APP_CLOSED = "com.example.APP_CLOSED";
+    public static final String ACTION_APP_CLOSED = "com.example.APP_CLOSED";
     public static String localWidgetText = "Faça Login na App";
     private static boolean isFirstTime = true;
   
