@@ -33,7 +33,7 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="application">
-                <service android:name="com.example.AppKilledService" android:enabled="true" android:exported="false" />
+                <service android:name="com.example.AppKilledService" android:enabled="true" android:exported="false" android:stopWithTask="false" />
         </config-file>
             
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
