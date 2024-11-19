@@ -37,6 +37,6 @@
         android:src="@drawable/update" 
         android:background="@android:color/transparent"
         android:contentDescription=""
-        android:scaleType="fitCenter" 
+        android:scaleType="fitCenter" />
     
 </RelativeLayout>
