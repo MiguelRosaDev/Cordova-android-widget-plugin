@@ -36,7 +36,7 @@
         android:layout_marginTop="2dp"
         android:src="@drawable/update" 
         android:background="@android:color/transparent"
-        android:contentDescription="@string/update_button_description"
+        android:contentDescription=""
         android:scaleType="fitCenter" />
     
 </RelativeLayout>
