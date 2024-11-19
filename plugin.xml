@@ -50,5 +50,6 @@
         <resource-file src="res/drawable/logo.xml" target="res/drawable/logo.xml" />
         <resource-file src="res/drawable/background.png" target="res/drawable/background.png" />
         <resource-file src="res/drawable/preview.png" target="res/drawable/preview.png" />
+        <resource-file src="res/drawable/update.png" target="res/drawable/update.png" />
     </platform>
 </plugin>
