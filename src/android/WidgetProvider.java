@@ -17,6 +17,7 @@ public class WidgetProvider extends AppWidgetProvider {
     public static final String UPDATE_ACTION = "com.example.UPDATE_WIDGET";
     public static final String ACTION_APP_CLOSED = "com.example.APP_CLOSED";
     public static final String ACTION_APPWIDGET_DELETED = "android.appwidget.action.APPWIDGET_DELETED";
+    public static final String ACTION_APP_KILLED = "com.example.APP_KILLED";
     public static String localWidgetText = "Faça Login na App";
     private static boolean isFirstTime = true;
   
@@ -52,7 +53,7 @@ public class WidgetProvider extends AppWidgetProvider {
             } else {
                 Log.e(TAG, "WidgetPlugin instance is null");
             }
-        } else if (ACTION_APP_CLOSED.equals(intent.getAction()) || ACTION_APPWIDGET_DELETED.equals(intent.getAction())) {
+        } else if (ACTION_APP_CLOSED.equals(intent.getAction()) || ACTION_APPWIDGET_DELETED.equals(intent.getAction()) || ACTION_APP_KILLED.equals(intent.getAction())) {
             Log.d(TAG, "App closed event received in widget");
             String widgetText = intent.getStringExtra("widgetText");
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
