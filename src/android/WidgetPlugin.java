@@ -53,9 +53,8 @@ public class WidgetPlugin extends CordovaPlugin {
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
             context.sendBroadcast(intent);
 
-            Context context = this.cordova.getActivity().getApplicationContext();
-            Intent intent = new Intent(context, AppKilledService.class);
-            context.startService(intent);
+            Intent intentAppKilled = new Intent(context, AppKilledService.class);
+            context.startService(intentAppKilled);
             
             Log.d(TAG, "Update widget intent sent with text: " + text);
             callbackContext.success("Widget update request sent successfully");
