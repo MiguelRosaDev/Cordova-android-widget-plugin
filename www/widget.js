@@ -6,6 +6,9 @@ var AndroidWidget = {
     },
     listenForButtonClicks: function(successCallback, errorCallback) {
         exec(successCallback, errorCallback, "AndroidWidget", "listenForButtonClicks", []);
+    },
+    isWidgetOnHomeScreen: function(successCallback, errorCallback) {
+        exec(successCallback, errorCallback, "AndroidWidget", "isWidgetOnHomeScreen", []);
     }
 };
 

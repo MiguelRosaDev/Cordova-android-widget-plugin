@@ -79,6 +79,23 @@ public class WidgetPlugin extends CordovaPlugin {
         }
     }
     
+    private void isWidgetOnHomeScreen(CallbackContext callbackContext) {
+        try {
+            Context context = this.cordova.getActivity().getApplicationContext();
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            ComponentName widgetComponent = new ComponentName(context, WidgetProvider.class);
+            int[] widgetIds = appWidgetManager.getAppWidgetIds(widgetComponent);
+            
+            boolean isOnHomeScreen = widgetIds.length > 0;
+            Log.d(TAG, "Widget on home screen: " + isOnHomeScreen + " (Count: " + widgetIds.length + ")");
+            
+            callbackContext.success(isOnHomeScreen ? "true" : "false");
+        } catch (Exception e) {
+            Log.e(TAG, "Error checking widget status: " + e.getMessage());
+            callbackContext.error("Failed to check widget status: " + e.getMessage());
+        }
+    }
+    
     @Override
     public void onDestroy() {
         super.onDestroy();
