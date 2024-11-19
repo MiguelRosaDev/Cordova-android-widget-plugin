@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import android.util.Log;
 import android.content.ComponentName;
+import android.text.Html;
 
 public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
@@ -67,8 +68,11 @@ public class WidgetProvider extends AppWidgetProvider {
             RemoteViews views = new RemoteViews(context.getPackageName(), getResourceId(context, "widget_layout", "layout"));
             if (views != null && !text.trim().isEmpty()) {
                 int textViewId = getResourceId(context, "appwidget_text", "id");
-                views.setTextViewText(textViewId, text);
-                views.setTextColor(textViewId, 0xFFFFFFFF); // White text color
+                
+                String plainText = Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY).toString();
+                
+                views.setTextViewText(textViewId, plainText);
+                //views.setTextColor(textViewId, 0xFFFFFFFF); // White text color
 
                 // Set the background image
                 int logoResourceId = getResourceId(context, "logo", "drawable");
