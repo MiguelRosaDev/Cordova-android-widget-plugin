@@ -9,6 +9,7 @@ import android.widget.RemoteViews;
 import android.util.Log;
 import android.content.ComponentName;
 import android.text.Html;
+import android.text.Spanned;
 
 public class WidgetProvider extends AppWidgetProvider {
     private static final String TAG = "WidgetProvider";
@@ -69,9 +70,9 @@ public class WidgetProvider extends AppWidgetProvider {
             if (views != null && !text.trim().isEmpty()) {
                 int textViewId = getResourceId(context, "appwidget_text", "id");
                 
-                String plainText = Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY).toString();
+                Spanned spannedText = Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY);
                 
-                views.setTextViewText(textViewId, plainText);
+                views.setTextViewText(textViewId, spannedText);
                 //views.setTextColor(textViewId, 0xFFFFFFFF); // White text color
 
                 // Set the background image
