@@ -16,12 +16,12 @@
 
     <TextView
         android:id="@+id/appwidget_text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="4dp"
         android:textColor="#FFFFFF"
-        android:textSize="13sp"
+        android:textSize="14sp"
         android:padding="2dp"
         android:text="Por favor faça login na App"
         android:textStyle="bold" />
