@@ -31,6 +31,10 @@
             <uses-permission android:name="android.permission.WAKE_LOCK" />
             <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
         </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="application">
+                <service android:name="com.example.AppKilledService" android:enabled="true" android:exported="false" />
+        </config-file>
             
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <receiver android:name="com.example.WidgetProvider" android:exported="true">
