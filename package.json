@@ -19,12 +19,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/cordova-plugin-android-widget.git"
+    "url": "git+https://github.com/MiguelRosaDev/cordova-plugin-android-widget.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/cordova-plugin-android-widget/issues"
+    "url": "https://github.com/MiguelRosaDev/cordova-plugin-android-widget/issues"
   },
-  "homepage": "https://github.com/yourusername/cordova-plugin-android-widget#readme",
+  "homepage": "https://github.com/MiguelRosaDev/cordova-plugin-android-widget#readme",
   "engines": {
     "cordovaDependencies": {
       "1.0.0": {
